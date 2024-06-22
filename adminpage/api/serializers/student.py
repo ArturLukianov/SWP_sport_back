@@ -11,3 +11,17 @@ class StudentSerializer(serializers.ModelSerializer):
     class Meta:
         model = Student
         fields = ('id', 'name', 'email', 'medical_group')
+
+
+class StudentUpdateSerializer(serializers.ModelSerializer):
+    email = serializers.CharField()
+
+    class Meta:
+        model = Student
+        fields = ['email', 'gender', 'course', 'medical_group',
+                  'enrollment_year', 'telegram', 'student_status',
+                  'sport', 'comment']
+
+
+class BatchStudentUpdateSerializer(serializers.Serializer):
+    students = StudentUpdateSerializer(many=True)

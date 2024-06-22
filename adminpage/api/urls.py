@@ -18,6 +18,8 @@ from api.views import (
     medical_groups,
 )
 
+from api.views.v2 import student
+
 
 class NegativeIntConverter:
     regex = '-?\d+'
@@ -99,6 +101,10 @@ urlpatterns = [
 
     # medical groups
     path(r"medical_groups/", medical_groups.medical_groups_view),
+
+    # v2
+    # batch student operations
+    path(r"v2/students/batch-update", student.batch_update_students)
 ]
 
 urlpatterns.extend([
