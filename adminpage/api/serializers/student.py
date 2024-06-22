@@ -13,6 +13,10 @@ class StudentSerializer(serializers.ModelSerializer):
         fields = ('id', 'name', 'email', 'medical_group')
 
 
+class StudentAttendanceSerializer(serializers.Serializer):
+    attendance = serializers.JSONField()
+
+
 class StudentUpdateSerializer(serializers.ModelSerializer):
     email = serializers.CharField()
 
