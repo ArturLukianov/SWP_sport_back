@@ -15,3 +15,17 @@ class StudentSerializer(serializers.ModelSerializer):
 
 class StudentAttendanceSerializer(serializers.Serializer):
     attendance = serializers.JSONField()
+
+
+class StudentUpdateSerializer(serializers.ModelSerializer):
+    email = serializers.CharField()
+
+    class Meta:
+        model = Student
+        fields = ['email', 'gender', 'course', 'medical_group',
+                  'enrollment_year', 'telegram', 'student_status',
+                  'sport', 'comment']
+
+
+class BatchStudentUpdateSerializer(serializers.Serializer):
+    students = StudentUpdateSerializer(many=True)
